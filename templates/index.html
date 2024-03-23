@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../static/css/styles.css">
+    <style>
+        /* Additional CSS styles for centering the Predict button */
+        .center-btn {
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Center-align the prediction result */
+        .prediction-result {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+    <title>BERT Sentiment Analysis</title>
+</head>
+<body>
+    <div class="container">
+        <h1>BERT Sentiment Analysis Web App</h1>
+        <div class="welcome-message">
+            <p>Welcome to the BERT Sentiment Analysis Web App!</p>
+        </div>
+        
+        <p>This app uses a pre-trained BERT (Bidirectional Encoder Representations from Transformers) model to predict the sentiment of a given sentence. BERT is a powerful natural language processing model developed by Google that understands the context and meaning of words in a sentence.</p>
+        
+        <h2>How to Use:</h2>
+        <ol>
+            <li>Enter a sentence in the input field below. For example, you can try sentences like "I love this movie" or "The food was terrible."</li>
+            <li>Click the "Predict" button to see the sentiment prediction. The app will analyze the sentence and classify it as either positive or negative based on the sentiment it conveys.</li>
+        </ol>
+
+        <h3>About BERT Sentiment Analysis:</h3>
+        <p>The sentiment analysis model used in this app has been fine-tuned using a dataset of movie reviews. It has learned to recognize patterns and features in text that indicate positive or negative sentiments.</p>
+
+        <h3>Accuracy and Performance:</h3>
+        <p>While the model strives for accuracy, it's important to note that sentiment analysis can be subjective, and the results may vary based on the complexity of the sentence or the nuances of language. The app aims to provide a general understanding of sentiment but may not capture all subtleties.</p>
+
+        <form action="/predict" method="post">
+            <label for="sentence">Enter a sentence:</label><br>
+            <input type="text" id="sentence" name="sentence" placeholder="Enter the sentence" required><br>
+
+            <!-- Apply the center-btn class to center the Predict button -->
+            <div class="center-btn">
+                <input type="submit" value="Predict">
+            </div>
+        </form>
+
+        {% if prediction %}
+        <div class="prediction-result">
+            <h2>Prediction Result</h2>
+            <p class="{% if prediction == 'Negative' %} negative-text {% else %} positive-text {% endif %}">
+                The sentiment of the entered sentence is: {{ prediction }}
+        </div>
+        {% endif %}
+        <div class="social-links">
+            <a href="https://www.instagram.com/end_of_night.17j03/" target="_blank">
+                <img src="../static/css/img/instagram.jpg" alt="Instagram">
+            </a>
+            <a href="https://www.facebook.com/nishantraghuwanshi.singh.5" target="_blank">
+                <img src="../static/css/img/fb.png" alt="Facebook">
+            </a>
+            <a href="https://www.linkedin.com/in/nishant-raghuwanshi-1509a724a/" target="_blank">
+                <img src="../static/css/img/linkdin.png" alt="LinkedIn">
+            </a>
+            <a href="https://github.com/Nishant2018" target="_blank">
+                <img src="../static/css/img/github.png" alt="GitHub">
+            </a>
+            <a href="https://www.kaggle.com/endofnight17j03" target="_blank">
+                <img src="../static/css/img/Kaggle_logo.png" alt="Kaggle">
+            </a>
+        </div>
+    </div>
+</body>
+</html>
